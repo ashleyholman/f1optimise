@@ -1,0 +1,52 @@
+*** F1 Dreamteam Team Optimiser ***
+***********************************
+By: Ashley Holman <dscvlt@gmail.com>
+
+== About ==
+This program is designed to assist with choosing good-value trades for the
+Sportal F1 Dream Team competition.  (f1dreamteam.sportal.com.au)
+
+It doesn't provide any special insights other than informing you of the best
+possible trade you can do in terms of maximising the total average points of
+your team, based on what you can afford.  It is simply a way to speed up manual
+analysis that could be done with spreadsheets.
+
+Trading based on average points is a purely backwards-looking strategy and does
+not take into consideration any predictions about the future.  Therefore, it
+should be used only as a suggestive guide.  Of course there are no guarantees
+that the strategy will be successfull.
+
+In the future I may enhance this program to list the top 10 trades so that the
+user can consider different options and decide based on their own preferences.
+
+== Building ==
+Build this with a C++ compiler such as g++ (Linux) or clang++ (Mac).  The code requires C++ 11.
+
+On Mac I build this with: clang++ -g -std=c++11 -stdlib=libc++ -o f1optimise f1optimise.cpp
+(requires XCode development tools installed and up to date).
+
+== Usage ==
+Step 1: Update the drivers.csv and teams.csv files with the latest driver and
+teams data.  The format of the CSV files is:
+
+<name>,<avgpoints>,<cost>
+
+This data can be obtained from the F1 Dream Team website.
+
+The cost is in millions.  Eg. a $22.6M driver would have a cost value of 22.6.
+
+Run: ./f1optimise [--single] <RemainingCapM> <Driver1> <Driver2> <Driver3> <Driver4> <Team1> <Team2> <Team3> <Team4>
+
+--single: report only the optimal single trade, rather than the default which
+          will suggest a single or double trade (depending on what is most optimal).
+
+<RemainingCapM>: Number of millions you have in spare cash.  Eg. if you have
+                 $1,500,000 free cash, then this parameter should be 1.5.
+<Driver1-4>:    Name of the drivers (matching the first column in drivers.csv) which you own.
+<Team1-4>:      Name of the teams (matching the first column in teams.csv)
+                which you own.  If you own a team twice, specify it two times.
+
+== Feedback / Suggestions / Comments / Issues ==
+Raise an issue via github (http://github.com/ashleyholman/f1optimise) or email me.
+
+Thanks.
